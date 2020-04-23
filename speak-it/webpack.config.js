@@ -37,7 +37,10 @@ module.exports = (env, options) => {
       compress: true,
       port: 9000
     },
-    plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin()],
+    plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'src/index.html',
+    })],
     entry: ['./src/app.js', './src/style.scss'],
     output: {
       filename: 'main.js',
