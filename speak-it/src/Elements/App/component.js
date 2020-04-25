@@ -22,7 +22,7 @@ export default class Component {
     this.element.setAttribute(atribute, content);
     return this;
   }
-  
+
   append(...childs) {
     childs.forEach((a) => this.element.append(a.element));
     return this;

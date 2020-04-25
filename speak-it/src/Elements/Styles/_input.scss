@@ -1,0 +1,20 @@
+@import './color';
+
+input {
+  margin: 40px 25px;
+  width: 200px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: block;
+  border: none;
+  padding: 10px;
+  border-bottom: solid 1px $border-color;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, $border-color 4%);
+  color: darken($border-color, 20%);
+  
+  &:focus, &:valid {
+    box-shadow: none;
+    outline: none;
+    background-position: 0 0;
+  }
+}
