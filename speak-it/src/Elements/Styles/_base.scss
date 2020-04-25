@@ -2,4 +2,9 @@
 
 body {
   background-color: $background-color;
+  height: 100%;
+
+  .container {
+    margin: 0 auto;
+  }
 }

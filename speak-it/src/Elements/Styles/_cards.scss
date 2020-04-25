@@ -1,0 +1,27 @@
+@import './color';
+
+.card-container {
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    width: 97vw;
+    padding: 1%;
+    justify-content: center;
+    align-items: center;
+
+  .card {
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid $inactive-border;
+    padding: 1%;
+    margin: 1%;
+    border-radius: 5px;
+    span {
+      text-align: center;
+      color: $button-color;
+      font-size: 14pt;
+      font-family: 'Inconsolata', monospace
+    }
+  }
+}

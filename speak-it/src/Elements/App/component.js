@@ -27,4 +27,12 @@ export default class Component {
     childs.forEach((a) => this.element.append(a.element));
     return this;
   }
+
+  deleteAllChilds() {
+    this.element.innerHTML = '';
+  }
+
+  addEventListener(event, handler) {
+    this.element.addEventListener(event, handler);
+  }
 }

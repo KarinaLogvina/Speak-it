@@ -1,15 +1,20 @@
 import Component from './component';
-import WordGenerator from './wordGenerator';
+import { createNButtons } from './helpers';
+import getTranslation from './getTranslate';
 
 export default class Layout extends Component {
   constructor() {
     super('div');
     this.addClasses('container');
     const speakInput = new Component('input');
-    const cardContainer = new Component('div');
-    cardContainer.addClasses('card-container');
-    const cards = new WordGenerator();
-    cardContainer.append(cards);
+    this.translation = new Component('span');
+    this.translation.addClasses('translation');
+    this.cardContainer = new Component('div');
+    this.cardContainer.addClasses('card-container');
+    const categoryContainer = new Component('div');
+    categoryContainer.addClasses('category-container');
+    const categoryButtons = createNButtons(6, []);
+    categoryContainer.append(...categoryButtons);
     const buttonContainer = new Component('div');
     buttonContainer.addClasses('button-container');
     const repeatButton = new Component('button');
@@ -22,7 +27,18 @@ export default class Layout extends Component {
     statisticButton.addClasses('button', 'statistic-button');
     statisticButton.setTextContent('Statistic');
     buttonContainer.append(repeatButton, startGameButton, statisticButton);
-    this.append(speakInput, cardContainer, buttonContainer);
+    this.append(categoryContainer, this.translation, speakInput, this.cardContainer, buttonContainer);
     document.body.append(this.element);
+  }
+
+  fillCardContainer(...cards) {
+    this.cardContainer.deleteAllChilds();
+    this.cardContainer.append(...cards);
+    cards.forEach((c) => c.addEventListener('click', () => {
+      const { word } = c;
+      getTranslation(word).then((a) => {
+        this.translation.setTextContent(a);
+      });
+    }));
   }
 }
