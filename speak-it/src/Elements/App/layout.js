@@ -27,7 +27,7 @@ export default class Layout extends Component {
     this.buttonContainer = new Component('div');
     this.buttonContainer.addClasses('button-container');
     this.restartButton = new Component('button');
-    this.restartButton.addClasses('button', 'repeat-button');
+    this.restartButton.addClasses('button', 'restart-button');
     this.restartButton.setTextContent('Restart');
     this.startGameButton = new Component('button');
     this.startGameButton.addClasses('button', 'start-button');

@@ -45,3 +45,7 @@ document.querySelectorAll('.category-button').forEach((b) => b.addEventListener(
     layout.fillCardContainer(...cards);
   });
 }));
+
+document.querySelector('.restart-button').addEventListener('click', () => {
+  document.querySelectorAll('.card').forEach((c) => c.classList.remove('select'));
+});
