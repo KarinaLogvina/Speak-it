@@ -2,11 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, options) => {
-  const dev = options.mode === "development";
+  const dev = options.mode === 'development';
   const config = {
-    devtool: dev ? "source-map" : "none",
+    devtool: dev ? 'source-map' : 'none',
     module: {
       rules: [
         {
@@ -16,9 +17,9 @@ module.exports = (env, options) => {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
-              plugins: ['@babel/plugin-transform-runtime']
-            }
-          }
+              plugins: ['@babel/plugin-transform-runtime'],
+            },
+          },
         },
         {
           test: /\.s[ac]ss$/i,
@@ -30,22 +31,24 @@ module.exports = (env, options) => {
             'sass-loader',
           ],
         },
-      ]
+      ],
     },
     devServer: {
       contentBase: path.join(__dirname, 'dist'),
       compress: true,
-      port: 9000
+      port: 9000,
     },
     plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.html',
-    })],
+    }), new CopyPlugin([
+      { from: './src/assets', to: 'dist' },
+    ])],
     entry: ['./src/app.js', './src/style.scss'],
     output: {
       filename: 'main.js',
       path: path.resolve(__dirname, 'dist'),
     },
-  }
+  };
   return config;
 };

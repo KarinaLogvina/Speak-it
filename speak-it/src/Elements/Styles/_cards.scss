@@ -4,24 +4,29 @@
     display: flex;
     margin: 0 auto;
     flex-wrap: wrap;
-    width: 97vw;
+    width: 100%;
     padding: 1%;
     justify-content: center;
     align-items: center;
 
+
   .card {
-    width: 15vw;
+    width: 10vw;
     display: flex;
     flex-direction: column;
     border: 2px solid $inactive-border;
     padding: 1%;
     margin: 1%;
     border-radius: 5px;
+    cursor: pointer;
     span {
       text-align: center;
       color: $button-color;
       font-size: 14pt;
-      font-family: 'Inconsolata', monospace
+      font-family: 'Inconsolata', monospace;
     }
+  }
+  .select {
+    background-color: $button-text-color;
   }
 }

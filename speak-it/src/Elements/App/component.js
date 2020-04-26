@@ -35,4 +35,11 @@ export default class Component {
   addEventListener(event, handler) {
     this.element.addEventListener(event, handler);
   }
+
+  appendClones(...clones) {
+    clones.forEach((e) => {
+      const clone = e.cloneNode(true);
+      this.element.append(clone);
+    });
+  }
 }

@@ -14,8 +14,8 @@ export default class WordGenerator {
         this.groups.next();
       }
     }
-    const currentsWords = await this.returnCurrentWords();
-    return currentsWords;
+    this.currentsWords = await this.returnCurrentWords();
+    return this.currentsWords;
   }
 
   async setGroup(groupNumber) {
@@ -23,10 +23,14 @@ export default class WordGenerator {
   }
 
   async returnCurrentWords() {
-    const currentsWords = await getWords(this.groups.current, this.pages.current);
-    const partZero = currentsWords.slice(0, 10);
-    const partOne = currentsWords.slice(10);
+    this.currentsWords = await getWords(this.groups.current, this.pages.current);
+    const partZero = this.currentsWords.slice(0, 10);
+    const partOne = this.currentsWords.slice(10);
     const wordsPage = [partZero, partOne];
     return wordsPage[this.parts.current];
+  }
+
+  getCurrentWords() {
+    return this.currentsWords;
   }
 }

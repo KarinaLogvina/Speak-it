@@ -1,0 +1,18 @@
+@import './color';
+
+.image-container {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  .card-img {
+    border-radius: 10px;
+  }
+  .translation {
+    color: $button-color;
+    font-family: 'Inconsolata', monospace;
+    font-size: 14pt;
+    padding: 10px 0;
+  }
+}

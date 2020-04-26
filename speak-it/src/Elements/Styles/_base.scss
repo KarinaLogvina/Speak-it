@@ -1,10 +1,26 @@
 @import "./color";
 
 body {
-  background-color: $background-color;
-  height: 100%;
+  background-image: url('https://cutewallpaper.org/21/simple-backgrounds-designs/Simple-Background-backgrounds-Design-Template-1585819.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Inconsolata', monospace;
 
   .container {
+    width: 1100px;
     margin: 0 auto;
+  }
+
+  img{
+    height: 260px;
+    width: 390px;
+  }
+
+  .icon {
+    margin: 0 auto;
+    height: 30px;
+    width: 30px;
   }
 }
