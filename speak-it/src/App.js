@@ -1,7 +1,7 @@
 import Layout from './Elements/App/layout';
 import WordGenerator from './Elements/App/wordGenerator';
 import cardsInformation, {
-  createModal, createStartScreen, recognitionFunc, createLink,
+  createModal, createStartScreen, createRecognition, createLink,
 } from './Elements/App/helpers';
 
 /**
@@ -13,7 +13,7 @@ export default class App {
 
   async init() {
     this.layout = new Layout();
-    this.recognition = recognitionFunc();
+    this.recognition = createRecognition();
     this.wordsGenerator = new WordGenerator();
   }
 

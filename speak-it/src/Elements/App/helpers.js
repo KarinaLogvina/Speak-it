@@ -109,32 +109,23 @@ const statisticModal = () => {
   return statisticModalContainer;
 };
 
-const recognitionFunc = () => {
+// называем в соответствии с тем что делает - создает распознователь речи
+const createRecognition = () => {
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   const recognition = new window.SpeechRecognition();
   recognition.interimResults = false;
   recognition.lang = 'en-US';
-
+    // обрабатываем результаты распознователя не на месте, только создаем Соотв. событие
   recognition.addEventListener('result', (e) => {
     const transcript = Array.from(e.results)
       .map((result) => result[0])
       .map((result) => result.transcript)
       .join('')
       .toLowerCase();
-    document.querySelector('.input').value = transcript;
-    const match = [...document.querySelectorAll('.card:not(.select)')].find((el) => el.querySelector('.word').textContent.toLowerCase() === transcript);
-    if (match) {
-      match.classList.add('select');
-    }
-    if (document.querySelectorAll('.card:not(.select)').length === 0) {
-      const mistake = 0;
-      const correct = 10;
-      const statistic = statisticModal(mistake, correct);
-      const modal = createModal(statistic);
-      document.body.append(modal.element);
-      recognition.abort();
-    }
+      
+  // событие отправляем в document - потому что слушатель на документ повесить можно где угодно        
+  document.dispatchEvent(new SpeechRecognitionResult(transcript));
   });
   return recognition;
 };
@@ -147,5 +138,5 @@ export {
   createModal,
   createStartScreen,
   statisticModal,
-  recognitionFunc,
+  createRecognition,
 };
