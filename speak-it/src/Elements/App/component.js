@@ -34,6 +34,7 @@ export default class Component {
 
   addEventListener(event, handler) {
     this.element.addEventListener(event, handler);
+    return this;
   }
 
   appendClones(...clones) {

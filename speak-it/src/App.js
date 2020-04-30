@@ -14,7 +14,9 @@ export default class App {
   async init() {
     this.layout = new Layout();
     this.recognition = createRecognition();
-    this.wordsGenerator = new WordGenerator();
+    this.wordsGenerator = new WordGenerator(); // генератор создан, но он еще ничего не скачал
+    await this.wordsGenerator.fetchCurrent(); // качаем
+    
   }
 
 
