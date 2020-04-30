@@ -34,7 +34,7 @@ export default class Layout extends Component {
       .addClasses('button', 'statistic-button')
       .setTextContent('Statistic')
       .addEventListener('click', () => { // вот здесь мы просто говорим документу что надо создать модалку статистики
-        document.dispatchEvent('createStatsModal');
+        document.dispatchEvent(new CustomEvent('createStatsModal')); //просто свое событие - от него надо только его тип (имя)
     });
     this.buttonContainer.append(this.restartButton, this.startGameButton, this.statisticButton);
     this.imageContainer.append(this.cardImage, this.translation);
