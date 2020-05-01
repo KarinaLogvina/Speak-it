@@ -34,7 +34,7 @@ export default class Layout extends Component {
       .addClasses('button', 'statistic-button')
       .setTextContent('Statistic')
       .addEventListener('click', () => { // вот здесь мы просто говорим документу что надо создать модалку статистики
-        document.dispatchEvent(new CustomEvent('createStatsModal')); //просто свое событие - от него надо только его тип (имя)
+        document.dispatchEvent(new CustomEvent('createStatsModal')); //простое (без дополнительной инфы) свое событие - от него надо только его тип (имя)
     });
     this.buttonContainer.append(this.restartButton, this.startGameButton, this.statisticButton);
     this.imageContainer.append(this.cardImage, this.translation);
@@ -46,16 +46,5 @@ export default class Layout extends Component {
     document.body.append(this.element);
   }
 
-  fillCardContainer(...cards) {
-    this.cardContainer.deleteAllChilds();
-    this.cardContainer.append(...cards);
-    cards.forEach((c) => c.addEventListener('click', () => {
-      const { word } = c;
-      this.cardImage.setAttribute('src', createLink(c.image));
-      new Audio(createLink(c.audio)).play();
-      getTranslation(word).then((a) => {
-        this.translation.setTextContent(a);
-      });
-    }));
-  }
+  // информацию в карточках заполнять/заменять будем не здесь
 }
